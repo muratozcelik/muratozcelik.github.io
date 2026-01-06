@@ -7,7 +7,7 @@ Immerse yourself in a world of cozy creativity where you solve satisfying puzzle
 ---
 
 ### 📥 Download
-*Coming soon to the App Store.*
+https://apps.apple.com/tr/app/craft-master-place-it/id6757005325
 
 ---
 
@@ -17,7 +17,6 @@ Immerse yourself in a world of cozy creativity where you solve satisfying puzzle
 ---
 
 ### ⚖️ Legal
- We do not collect personal data.
 *   [View Privacy Policy](https://gist.github.com/muratozcelik/62a6301f156d2c00327ed221c5571ad7)
 
 ---
