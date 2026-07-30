@@ -1,13 +1,13 @@
-# Craft Master 🎨
+# Bounce Master
 
-**Design. Solve. Relax.**
+**Aim. Bounce. Smash.**
 
-Immerse yourself in a world of cozy creativity where you solve satisfying puzzles to unlock stylish furniture and build the room of your dreams from scratch. Enjoy a stress-free, offline-friendly experience designed for pure relaxation, allowing you to design and unwind anytime, anywhere.
+Immerse yourself in a playful world of bouncing physics, where one well-placed shot ricochets off bumpers and spinners to blast through crates, dynamite and every last toy on the board. Enjoy a laid-back, offline-friendly experience with no timers and no pressure, letting you line up the perfect shot anytime, anywhere.
 
 ---
 
 ### 📥 Download
-https://apps.apple.com/tr/app/craft-master-place-it/id6757005325
+https://apps.apple.com/us/app/bounce-master-smash-toys/id6782886343
 
 ---
 
@@ -17,9 +17,9 @@ https://apps.apple.com/tr/app/craft-master-place-it/id6757005325
 ---
 
 ### ⚖️ Legal
-*   [View Privacy Policy](https://gist.github.com/muratozcelik/62a6301f156d2c00327ed221c5571ad7)
+*   [View Privacy Policy](https://gist.github.com/muratozcelik/fed1a91c9e790dd03fdf65e291b4d523)
 
 ---
 
 <br>
-<small>© 2025 Craft Master Team. All rights reserved.</small>
+<small>© 2026 Bounce Master Team. All rights reserved.</small>
