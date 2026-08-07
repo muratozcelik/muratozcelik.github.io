@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Murat Ozcelik — Games</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --card-border: #2a2e3d;
+    --text: #e8eaf0;
+    --text-dim: #9aa0b0;
+    --accent: #ff6b4a;
+    --accent-2: #4a9eff;
+    --radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(255,107,74,0.12), transparent),
+      radial-gradient(ellipse 80% 50% at 80% -10%, rgba(74,158,255,0.10), transparent);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  /* ---------- Tabs ---------- */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    padding: 6px;
+    margin-bottom: 40px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+  }
+
+  .tab-btn:hover { color: var(--text); }
+
+  .tab-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), #ff8f4a);
+    box-shadow: 0 4px 16px rgba(255,107,74,0.35);
+  }
+
+  .tab-btn.active.alt {
+    background: linear-gradient(135deg, var(--accent-2), #7a4aff);
+    box-shadow: 0 4px 16px rgba(74,158,255,0.35);
+  }
+
+  /* ---------- Panels ---------- */
+  .panel {
+    display: none;
+    animation: fadeUp 0.35s ease;
+  }
+  .panel.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { text-align: center; margin-bottom: 40px; }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff, #c8cede);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+
+  .tagline {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  #panel-color-wheel-sort .tagline { color: var(--accent-2); }
+
+  .description {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card:hover {
+    border-color: #3a3f52;
+    transform: translateY(-2px);
+  }
+
+  .card h2 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .card p, .card a { font-size: 1rem; }
+
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .download-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), #ff8f4a);
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 6px 20px rgba(255,107,74,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .download-btn:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(255,107,74,0.45);
+  }
+
+  #panel-color-wheel-sort .download-btn {
+    background: linear-gradient(135deg, var(--accent-2), #7a4aff);
+    box-shadow: 0 6px 20px rgba(74,158,255,0.35);
+  }
+
+  #panel-color-wheel-sort .download-btn:hover {
+    box-shadow: 0 10px 28px rgba(74,158,255,0.45);
+  }
+
+  .download-wrap { text-align: center; margin-bottom: 32px; }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="tabs" role="tablist">
+    <button class="tab-btn" id="tab-bounce-master" data-route="bounce-master" role="tab">🎯 Bounce Master</button>
+    <button class="tab-btn alt" id="tab-color-wheel-sort" data-route="color-wheel-sort" role="tab">🎨 Color Wheel Sort</button>
+  </nav>
+
+  <!-- ============ Bounce Master ============ -->
+  <section class="panel" id="panel-bounce-master" role="tabpanel">
+    <div class="hero">
+      <h1>Bounce Master</h1>
+      <div class="tagline">Aim. Bounce. Smash.</div>
+    </div>
+
+    <p class="description">
+      Immerse yourself in a playful world of bouncing physics, where one well-placed shot
+      ricochets off bumpers and spinners to blast through crates, dynamite and every last toy
+      on the board. Enjoy a laid-back, offline-friendly experience with no timers and no
+      pressure, letting you line up the perfect shot anytime, anywhere.
+    </p>
+
+    <div class="download-wrap">
+      <a class="download-btn" href="https://apps.apple.com/us/app/bounce-master-smash-toys/id6782886343" target="_blank" rel="noopener">📥 Download on the App Store</a>
+    </div>
+
+    <div class="card">
+      <h2>📞 Support &amp; Contact</h2>
+      <p><strong>Email:</strong> muratozcelik94 @ gmail.com</p>
+    </div>
+
+    <div class="card">
+      <h2>⚖️ Legal</h2>
+      <p><a href="https://gist.github.com/muratozcelik/fed1a91c9e790dd03fdf65e291b4d523" target="_blank" rel="noopener">View Privacy Policy</a></p>
+    </div>
+
+    <footer>© 2026 Bounce Master Team. All rights reserved.</footer>
+  </section>
+
+  <!-- ============ Color Wheel Sort ============ -->
+  <section class="panel" id="panel-color-wheel-sort" role="tabpanel">
+    <div class="hero">
+      <h1>Color Wheel Sort</h1>
+      <div class="tagline">Aim. Bounce. Smash.</div>
+    </div>
+
+    <p class="description">
+      Immerse yourself in a playful world of bouncing physics, where one well-placed shot
+      ricochets off bumpers and spinners to blast through crates, dynamite and every last toy
+      on the board. Enjoy a laid-back, offline-friendly experience with no timers and no
+      pressure, letting you line up the perfect shot anytime, anywhere.
+    </p>
+
+    <div class="download-wrap">
+      <a class="download-btn" href="https://apps.apple.com/us/app/bounce-master-smash-toys/id6782886343" target="_blank" rel="noopener">📥 Download on the App Store</a>
+    </div>
+
+    <div class="card">
+      <h2>📞 Support &amp; Contact</h2>
+      <p><strong>Email:</strong> muratozcelik94 @ gmail.com</p>
+    </div>
+
+    <div class="card">
+      <h2>⚖️ Legal</h2>
+      <p><a href="https://gist.github.com/muratozcelik/fed1a91c9e790dd03fdf65e291b4d523" target="_blank" rel="noopener">View Privacy Policy</a></p>
+    </div>
+
+    <footer>© 2026 Color Wheel Sort Team. All rights reserved.</footer>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var ROUTES = ["bounce-master", "color-wheel-sort"];
+  var DEFAULT_ROUTE = ROUTES[0];
+
+  function showTab(route) {
+    if (ROUTES.indexOf(route) === -1) route = DEFAULT_ROUTE;
+    ROUTES.forEach(function (r) {
+      document.getElementById("panel-" + r).classList.toggle("active", r === route);
+      document.getElementById("tab-" + r).classList.toggle("active", r === route);
+    });
+    var titles = {
+      "bounce-master": "Bounce Master",
+      "color-wheel-sort": "Color Wheel Sort"
+    };
+    document.title = titles[route] + " — Murat Ozcelik";
+    return route;
+  }
+
+  // Determine route from URL: prefer path (/bounce-master), fall back to hash (#/bounce-master)
+  function routeFromUrl() {
+    var path = location.pathname.replace(/^\/+|\/+$/g, "");
+    if (ROUTES.indexOf(path) !== -1) return path;
+    var hash = location.hash.replace(/^#\/?/, "");
+    if (ROUTES.indexOf(hash) !== -1) return hash;
+    return DEFAULT_ROUTE;
+  }
+
+  function navigate(route) {
+    showTab(route);
+    // Try clean path URLs (works when served over http/https, e.g. GitHub Pages).
+    // Falls back to hash routing on file:// or if pushState is unavailable.
+    try {
+      if (location.protocol === "http:" || location.protocol === "https:") {
+        history.pushState({ route: route }, "", "/" + route);
+      } else {
+        location.hash = "/" + route;
+      }
+    } catch (e) {
+      location.hash = "/" + route;
+    }
+  }
+
+  // Wire up tab buttons
+  ROUTES.forEach(function (r) {
+    document.getElementById("tab-" + r).addEventListener("click", function () {
+      navigate(r);
+    });
+  });
+
+  // Handle browser back/forward
+  window.addEventListener("popstate", function () {
+    showTab(routeFromUrl());
+  });
+  window.addEventListener("hashchange", function () {
+    showTab(routeFromUrl());
+  });
+
+  // Initial route
+  showTab(routeFromUrl());
+})();
+</script>
+</body>
+</html>
