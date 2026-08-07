@@ -223,18 +223,19 @@
   <section class="panel" id="panel-color-wheel-sort" role="tabpanel">
     <div class="hero">
       <h1>Color Wheel Sort</h1>
-      <div class="tagline">Aim. Bounce. Smash.</div>
+      <div class="tagline">Drop. Spin. Sort.</div>
     </div>
 
     <p class="description">
-      Immerse yourself in a playful world of bouncing physics, where one well-placed shot
-      ricochets off bumpers and spinners to blast through crates, dynamite and every last toy
-      on the board. Enjoy a laid-back, offline-friendly experience with no timers and no
-      pressure, letting you line up the perfect shot anytime, anywhere.
+      A color-sorting puzzle with a twist: drop balls onto a spinning wheel and let timing do
+      the sorting. Tap a box, send its balls tumbling onto the wheel, and watch each color hop
+      into its matching slot as the ring comes around. Clear every slot to win — but leave the
+      ring too full and the colors jam. Easy one-tap play with real planning underneath,
+      offline-friendly, anytime, anywhere.
     </p>
 
     <div class="download-wrap">
-      <a class="download-btn" href="https://apps.apple.com/us/app/bounce-master-smash-toys/id6782886343" target="_blank" rel="noopener">📥 Download on the App Store</a>
+      <a class="download-btn" href="https://apps.apple.com/us/app/color-wheel-sort/id6783283863" target="_blank" rel="noopener">📥 Download on the App Store</a>
     </div>
 
     <div class="card">
@@ -244,7 +245,7 @@
 
     <div class="card">
       <h2>⚖️ Legal</h2>
-      <p><a href="https://gist.github.com/muratozcelik/fed1a91c9e790dd03fdf65e291b4d523" target="_blank" rel="noopener">View Privacy Policy</a></p>
+      <p><a href="https://gist.github.com/muratozcelik/a75867c0e255a94a42c754f847a2d925" target="_blank" rel="noopener">View Privacy Policy</a></p>
     </div>
 
     <footer>© 2026 Color Wheel Sort Team. All rights reserved.</footer>
@@ -254,64 +255,27 @@
 
 <script>
 (function () {
-  var ROUTES = ["bounce-master", "color-wheel-sort"];
-  var DEFAULT_ROUTE = ROUTES[0];
+  var TABS = ["bounce-master", "color-wheel-sort"];
+  var TITLES = {
+    "bounce-master": "Bounce Master",
+    "color-wheel-sort": "Color Wheel Sort"
+  };
 
-  function showTab(route) {
-    if (ROUTES.indexOf(route) === -1) route = DEFAULT_ROUTE;
-    ROUTES.forEach(function (r) {
-      document.getElementById("panel-" + r).classList.toggle("active", r === route);
-      document.getElementById("tab-" + r).classList.toggle("active", r === route);
+  function showTab(tab) {
+    TABS.forEach(function (t) {
+      document.getElementById("panel-" + t).classList.toggle("active", t === tab);
+      document.getElementById("tab-" + t).classList.toggle("active", t === tab);
     });
-    var titles = {
-      "bounce-master": "Bounce Master",
-      "color-wheel-sort": "Color Wheel Sort"
-    };
-    document.title = titles[route] + " — Murat Ozcelik";
-    return route;
+    document.title = TITLES[tab] + " — Murat Ozcelik";
   }
 
-  // Determine route from URL: prefer path (/bounce-master), fall back to hash (#/bounce-master)
-  function routeFromUrl() {
-    var path = location.pathname.replace(/^\/+|\/+$/g, "");
-    if (ROUTES.indexOf(path) !== -1) return path;
-    var hash = location.hash.replace(/^#\/?/, "");
-    if (ROUTES.indexOf(hash) !== -1) return hash;
-    return DEFAULT_ROUTE;
-  }
-
-  function navigate(route) {
-    showTab(route);
-    // Try clean path URLs (works when served over http/https, e.g. GitHub Pages).
-    // Falls back to hash routing on file:// or if pushState is unavailable.
-    try {
-      if (location.protocol === "http:" || location.protocol === "https:") {
-        history.pushState({ route: route }, "", "/" + route);
-      } else {
-        location.hash = "/" + route;
-      }
-    } catch (e) {
-      location.hash = "/" + route;
-    }
-  }
-
-  // Wire up tab buttons
-  ROUTES.forEach(function (r) {
-    document.getElementById("tab-" + r).addEventListener("click", function () {
-      navigate(r);
+  TABS.forEach(function (t) {
+    document.getElementById("tab-" + t).addEventListener("click", function () {
+      showTab(t);
     });
   });
 
-  // Handle browser back/forward
-  window.addEventListener("popstate", function () {
-    showTab(routeFromUrl());
-  });
-  window.addEventListener("hashchange", function () {
-    showTab(routeFromUrl());
-  });
-
-  // Initial route
-  showTab(routeFromUrl());
+  showTab(TABS[0]);
 })();
 </script>
 </body>
